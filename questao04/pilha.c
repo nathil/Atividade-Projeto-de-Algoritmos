@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "pilha.h"
 
@@ -51,4 +52,20 @@ void pilha_libera(Pilha* p) {
     }
     
     free(p);
+}
+
+
+void pilha_imprime(Pilha* p) {
+    Topo* t = p->topo;
+    
+   if (t == NULL) {
+        printf("Pilha vazia\n");
+        return;
+    }
+
+    while (t != NULL) {
+        printf("%.2f ", t->valor);
+        t = t->prox;
+    }
+    printf("\n");
 }
