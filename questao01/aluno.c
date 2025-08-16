@@ -70,6 +70,11 @@ void salvar_alunos(int n, Aluno** tab, const char* arquivo) {
 
 
 void adiciona_aluno(int n, Aluno** tab, int i) {
+    if (i < 0 || i >= n) {
+        printf("Índice inválido!\n");
+        return;
+    }
+
     tab[i] = malloc(sizeof(Aluno));
     printf("Digite o nome do aluno: ");
     scanf(" %s", tab[i]->nome);
@@ -94,6 +99,11 @@ void adiciona_aluno(int n, Aluno** tab, int i) {
 }
 
 void edita_aluno(int n, Aluno** tab, int i) {
+    if (i < 0 || i >= n) {
+        printf("Índice inválido!\n");
+        return;
+    }
+
     char editar = 'n';
 
     printf("Deseja editar o nome do aluno [%s]? (s/N): ", tab[i]->nome);
@@ -147,6 +157,11 @@ void edita_aluno(int n, Aluno** tab, int i) {
 }
 
 void retira_aluno(int n, Aluno** tab, int i) {
+    if (i < 0 || i >= n) {
+        printf("Índice inválido!\n");
+        return;
+    }
+    
     free(tab[i]);
     tab[i] = NULL;
 }
