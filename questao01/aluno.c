@@ -77,7 +77,7 @@ void adiciona_aluno(int n, Aluno** tab, int i) {
 
     tab[i] = malloc(sizeof(Aluno));
     printf("Digite o nome do aluno: ");
-    scanf(" %s", tab[i]->nome);
+    scanf(" %[^\n]", tab[i]->nome);
 
     printf("Digite a idade do aluno: ");
     scanf("%d", &tab[i]->idade);
@@ -172,6 +172,14 @@ void inicializa(int n, Aluno** tab) {
     }
 }
 
+void limpa(int n, Aluno** tab) {
+    for (int i = 0; i < n; i++) {
+        if (tab[i] != NULL) {
+            free(tab[i]);
+        }
+        tab[i] = NULL;
+    }
+}
 
 float media(Aluno* aluno) {
     return (aluno->p1 + aluno->p2 + aluno->p3) / 3.0;
@@ -199,20 +207,10 @@ void imprime_alunos(int n, Aluno** tab) {
     printf("| ID | Nome               | Idade | Matricula | Turma | Nota 1 | Nota 2 | Nota 3 | Média |\n");
     printf("%s", separador);
 
+    int vazia = 1; 
+
     for (int i = 0; i < n; i++) {
-        if (tab[i] == NULL) {
-            printf("| %2d | %-18s | %-5s | %-9s | %-5s | %-6s | %-6s | %-6s | %-5s |\n",
-                i + 1,
-                "Vazio",
-                "-",
-                "-",
-                "-",
-                "-",
-                "-",
-                "-",
-                "-"
-            );
-        } else {
+        if (tab[i] != NULL) {
             printf("| %2d | %-18.18s | %-5d | %-9.8s | %-5c | %6.2f | %6.2f | %6.2f | %5.2f |\n",
                 i + 1,
                 tab[i]->nome,
@@ -224,10 +222,14 @@ void imprime_alunos(int n, Aluno** tab) {
                 tab[i]->p3,
                 media(tab[i])
             );
-        }
+            vazia = 0; 
+        } 
     }
-
-    printf("%s", separador);
+                                                                                    
+    if(vazia){
+        printf("|    |                    |       |           |       |        |        |        |       |\n");
+    }
+    printf("%s", separador); 
 }
 
 void imprime_aprovados(int n, Aluno** tab) {
