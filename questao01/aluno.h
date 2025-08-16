@@ -7,6 +7,7 @@ Aluno** carregar_alunos(int n, const char* arquivo);
 void salvar_alunos(int n, Aluno** tab, const char* arquivo);
 
 void inicializa(int n, Aluno** tab);
+void limpa(int n, Aluno** tab);
 
 void adiciona_aluno(int n, Aluno** tab, int i);
 void edita_aluno(int n, Aluno** tab, int i);
