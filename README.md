@@ -1,5 +1,5 @@
 <h1 align="center"> Projeto Final de P.A </h1> 
-<p align="center"><i> Projeto para a avalicação final de Projetos de Algoritmos I. Implementado em C utilizando Estrutura de Dados como pilhas e listas encadeadas, além dos estudados anteriormente como Alocação Dinâmica de Memória. </i></p>
+<p align="center"><i> Projeto para a avalicação final de Projetos de Algoritmos I. Implementado em C utilizando Estrutura de Dados como pilhas e listas encadeadas, além dos conceitos estudados anteriormente como Alocação Dinâmica de Memória. </i></p>
 
 <h2> Sobre o projeto </h2>
 
