@@ -7,6 +7,17 @@ struct lista {
     struct lista *prox;
 };
 
+Lista* copia(Lista* lista) {
+    Lista* listaCopia = NULL;
+    
+    while(lista != NULL) {
+        inserir(&listaCopia, lista->info);
+        lista = lista->prox;
+    }
+    
+    return listaCopia;
+}
+
 void inserir(Lista **lista, float valor) {
     Lista *novo = malloc(sizeof(Lista));
     
@@ -30,18 +41,23 @@ void inserir(Lista **lista, float valor) {
     }
 }
 
-Lista* concatena(Lista* lista1, Lista* lista2) {
-    if (lista1 == NULL) return lista2;
+Lista* concatena(Lista** lista1, Lista* lista2) {
+    Lista* listaCopia = copia(lista2);  
 
-    Lista* listaCopia = lista1; 
+    if (*lista1 == NULL){
+        *lista1 = listaCopia; 
+        return *lista1;  
+    } 
 
-    while(listaCopia->prox != NULL){
-        listaCopia = listaCopia->prox; 
+    Lista* aux = *lista1; 
+
+    while(aux->prox != NULL){
+        aux = aux->prox; 
     }
 
-    listaCopia->prox = lista2;
+    aux->prox = listaCopia;
 
-    return lista1; 
+    return *lista1; 
 }
 
 void remover(Lista** lista, int i) {
@@ -72,6 +88,19 @@ void remover(Lista** lista, int i) {
 
     printf("\nIndice maior que a lista."); 
     exit(1); 
+}
+
+void liberar(Lista** lista) {
+    Lista* aux = *lista;
+    Lista* ant = NULL;
+    
+    while(aux != NULL) {
+        ant = aux;
+        aux = aux->prox;
+        free(ant);
+    }
+    
+    *lista = NULL;
 }
 
 int igual(Lista* l1, Lista* l2) {

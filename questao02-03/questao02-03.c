@@ -24,6 +24,7 @@ int main() {
         switch (opcao) {
             case 1:
             case 2:
+                liberar(opcao == 1 ? &l1 : &l2);
                 float valor;
                 do {
                     printf("Digite um valor para a lista %d (0 para sair): ", opcao);
@@ -33,8 +34,8 @@ int main() {
                 break;
                 
             case 3: 
-                Lista* listaConcatenada = concatena(l1, l2);
-                printf("\nListas concatenadas:\n");
+                Lista* listaConcatenada = concatena(&l1, l2);
+                printf("\nListas concatenadas: ");
                 imprimir(listaConcatenada);
                 break;
 
@@ -46,6 +47,10 @@ int main() {
                 }
                 break;
 
+            case 0:
+                printf("Saindo...");
+                break;
+            
             default:
                 printf("Opção inválida!\n");
         }
