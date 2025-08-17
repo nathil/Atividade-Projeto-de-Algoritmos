@@ -3,6 +3,8 @@
 
 <h2> Sobre o projeto </h2>
 
+<h2> Funcionalidades </h2>
+
 <h2> Ferramentas </h2> 
 <p display="inline-block">
   <img width="48" src="https://avatars.githubusercontent.com/u/25699522?s=200&v=4" alt="c-logo"/>
